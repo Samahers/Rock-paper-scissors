@@ -89,23 +89,30 @@ your score is ${humanScore}; the computer score is ${computerScore}`
  //console.log(humanScore);
  //console.log(computerScore);
 
-//create a playGame function where the game ends when either the player or the computer hit 5 score
+//create a playGame function where the game ends when you played 5 rounds 
 
 
 function playGame(){
     alert(`WELCOME IN A GAME OF ROCK, PAPER, SCISSORS
-the winner gets the cookie!
-make sure you type as it says or the computa will get the point 😔 `)
+you will play 5 rounds, the one who scores the most...
+wins a cookie !! 
+note: typos will grant the computer points, be careful `)
 
-    while (humanScore < 5 && computerScore < 5){
-        let humanChoice = getHumanChoice();
+let round = 0;
+    while (round < 5){
+        let humanChoice = getHumanChoice().toLocaleLowerCase();
         let computerChoice = getComputerChoice();
         //console.log(computerChoice);
         alert(playRound(humanChoice,computerChoice));
+        round++;
     }
 
-    if(humanScore==5){
+    if(humanScore > computerScore){
         alert("you won! congratulations 🍪")
+    }
+    else if (humanScore==computerScore)
+    {
+        alert("it's a tie...rematch?")
     }
     else
         alert("you lost... the computer got your cookie")
