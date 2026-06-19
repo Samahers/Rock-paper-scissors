@@ -40,3 +40,10 @@ type your move`);
 }
 
 //console.log(getHumanChoice());
+
+
+//3. keep scores of the human and computer
+// create variables humanScore and computerScore and initialize it with the value 0
+
+let humanScore = 0;
+let computerScore = 0;
