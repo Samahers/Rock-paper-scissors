@@ -1,7 +1,7 @@
 
 
 
-console.log("hello world!!!")
+//console.log("hello world!!")
 
 // requirements 
 // 1. function called getComputerChoice
@@ -100,7 +100,7 @@ make sure you type as it says or the computa will get the point 😔 `)
     while (humanScore < 5 && computerScore < 5){
         let humanChoice = getHumanChoice();
         let computerChoice = getComputerChoice();
-        console.log(computerChoice);
+        //console.log(computerChoice);
         alert(playRound(humanChoice,computerChoice));
     }
 
