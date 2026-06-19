@@ -34,8 +34,7 @@ function getComputerChoice(){
 //print what they wrote
 
 function getHumanChoice(){
-    let playerChoice = prompt(`WELCOME IN A GAME OF ROCK, PAPERS, SCISSORS
-type your move`);
+    let playerChoice = prompt(`type your choice: rock, paper, scissors`);
     return playerChoice;
 }
 
@@ -55,8 +54,8 @@ let computerScore = 0;
 // player wins if they played 
 // rock against scissors ; paper against rock ; scissors against paper
 
-const computerChoice = getComputerChoice();
-const humanChoice = getHumanChoice().toLocaleLowerCase();
+//const computerChoice = getComputerChoice();
+//const humanChoice = getHumanChoice().toLocaleLowerCase();
 
 
 function playRound(humanChoice, computerChoice){
@@ -65,19 +64,51 @@ function playRound(humanChoice, computerChoice){
     if((humanChoice=="rock" && computerChoice=="scissors") ||
       (humanChoice=="paper" && computerChoice=="rock") ||
       (humanChoice=="scissors" && computerChoice=="paper"))
-        {return message = ` you won ! you played ${humanChoice} and the computer played ${computerChoice}`
-        humanScore++;}
+        {
+        humanScore++;
+        return message = `you won ! you played ${humanChoice} and the computer played ${computerChoice}
+your score is ${humanScore}; the computer score is ${computerScore}`
+        
+        }
 
     else if(humanChoice == computerChoice)
-        {return message ="it's a tie!"}
+        {return message =`it's a tie!
+your score is ${humanScore}; the computer score is ${computerScore}`}
 
     else
-        {return message = ` you lost ! you played ${humanChoice} and the computer played ${computerChoice}`
+        {
         computerScore++;
+        return message = `you lost ! you played ${humanChoice} and the computer played ${computerChoice}
+your score is ${humanScore}; the computer score is ${computerScore}`
+        
         }
 
 }
 
-console.log(playRound(humanChoice, computerChoice));
-console.log(humanScore);
-console.log(computerScore);
+ //console.log(playRound(humanChoice, computerChoice));
+ //console.log(humanScore);
+ //console.log(computerScore);
+
+//create a playGame function where the game ends when either the player or the computer hit 5 score
+
+
+function playGame(){
+    alert(`WELCOME IN A GAME OF ROCK, PAPER, SCISSORS
+the winner gets the cookie!
+make sure you type as it says or the computa will get the point 😔 `)
+
+    while (humanScore < 5 && computerScore < 5){
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
+        console.log(computerChoice);
+        alert(playRound(humanChoice,computerChoice));
+    }
+
+    if(humanScore==5){
+        alert("you won! congratulations 🍪")
+    }
+    else
+        alert("you lost... the computer got your cookie")
+}
+
+playGame();
