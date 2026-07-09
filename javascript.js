@@ -1,8 +1,3 @@
-
-
-
-//console.log("hello world!!")
-
 // requirements 
 // 1. function called getComputerChoice
 //it returns the computer choice using Math.random
@@ -27,18 +22,32 @@ function getComputerChoice(){
     return computer_choice_string;
 }
 
-//console.log(getComputerChoice());
+
+
 
 //2. create getHumanChoice function 
 //prompt human to enter their choice 
 //print what they wrote
 
+
+
 function getHumanChoice(){
-    let playerChoice = prompt(`type your choice: rock, paper, scissors`);
-    return playerChoice;
+    // let playerChoice = prompt(`type your choice: rock, paper, scissors`);
+    // return playerChoice;
 }
 
-//console.log(getHumanChoice());
+
+
+    let playerChoice = "";
+    const playerButtons = document.querySelectorAll('.playerButton');
+    
+    playerButtons.forEach( button => {
+        button.addEventListener('click', (event) => {
+            playerChoice = event.target.value;
+            let computerChoice = getComputerChoice();
+            playRound(playerChoice, computerChoice)
+        });
+    });
 
 
 //3. keep scores of the human and computer
@@ -57,30 +66,34 @@ let computerScore = 0;
 //const computerChoice = getComputerChoice();
 //const humanChoice = getHumanChoice().toLocaleLowerCase();
 
+    const parent = document.querySelector('.parent');
+    const message = document.createElement("div");
 
 function playRound(humanChoice, computerChoice){
-    let message;
 
     if((humanChoice=="rock" && computerChoice=="scissors") ||
       (humanChoice=="paper" && computerChoice=="rock") ||
       (humanChoice=="scissors" && computerChoice=="paper"))
         {
         humanScore++;
-        return message = `you won ! you played ${humanChoice} and the computer played ${computerChoice}
+        message.textContent = `you won ! you played ${humanChoice} and the computer played ${computerChoice}
 your score is ${humanScore}; the computer score is ${computerScore}`
-        
+        parent.appendChild(message);
         }
 
     else if(humanChoice == computerChoice)
-        {return message =`it's a tie!
-your score is ${humanScore}; the computer score is ${computerScore}`}
+        {message.textContent =`it's a tie!
+your score is ${humanScore}; the computer score is ${computerScore}`
+        parent.appendChild(message);
+        }
 
     else
         {
         computerScore++;
-        return message = `you lost ! you played ${humanChoice} and the computer played ${computerChoice}
+        message.textContent = `you lost ! you played ${humanChoice} and the computer played ${computerChoice}
 your score is ${humanScore}; the computer score is ${computerScore}`
-        
+        parent.appendChild(message);
+
         }
 
 }
@@ -92,30 +105,35 @@ your score is ${humanScore}; the computer score is ${computerScore}`
 //create a playGame function where the game ends when you played 5 rounds 
 
 
-function playGame(){
-    alert(`WELCOME IN A GAME OF ROCK, PAPER, SCISSORS
-you will play 5 rounds, the one who scores the most...
-wins a cookie !! 
-note: typos will grant the computer points, be careful `)
+// function playGame(){
+//     alert(`WELCOME IN A GAME OF ROCK, PAPER, SCISSORS
+// you will play 5 rounds, the one who scores the most...
+// wins a cookie !! 
+// note: typos will grant the computer points, be careful `)
 
-let round = 0;
-    while (round < 5){
-        let humanChoice = getHumanChoice().toLocaleLowerCase();
-        let computerChoice = getComputerChoice();
-        //console.log(computerChoice);
-        alert(playRound(humanChoice,computerChoice));
-        round++;
-    }
 
-    if(humanScore > computerScore){
-        alert("you won! congratulations 🍪")
-    }
-    else if (humanScore==computerScore)
-    {
-        alert("it's a tie...rematch?")
-    }
-    else
-        alert("you lost... the computer got your cookie")
-}
+//         let humanChoice = getHumanChoice().toLocaleLowerCase();
+//         let computerChoice = getComputerChoice();
+//         //console.log(computerChoice);
+//         alert(playRound(humanChoice,computerChoice));
+//         round++;
+//     }
 
-playGame();
+//     if(humanScore > computerScore){
+//         alert("you won! congratulations 🍪")
+//     }
+//     else if (humanScore==computerScore)
+//     {
+//         alert("it's a tie...rematch?")
+//     }
+//     else
+//         alert("you lost... the computer got your cookie")
+
+
+// playGame();
+
+
+
+//------ adding UI
+
+
