@@ -7,14 +7,24 @@
     color: black;
     user-select: none;
    
+    
+
 }
+
+body{
+    display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+  height: 90vh;
+}
+
+
 
 .container{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 64px;
 }
 
 h1{
